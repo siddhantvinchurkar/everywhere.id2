@@ -28,6 +28,10 @@ self.__precacheManifest = [
     "revision": "c705391b8834a912453248e4d16b2c53"
   },
   {
+    "url": "components/index.skeleton.html",
+    "revision": "19dd36c6adc0a520a06b0ee67ba36436"
+  },
+  {
     "url": "CONTRIBUTING.md",
     "revision": "8afdfbc63fabdaae3c8dac447acc6586"
   },
@@ -57,11 +61,23 @@ self.__precacheManifest = [
   },
   {
     "url": "images/icons/favicon.ico",
-    "revision": "d4e07a75c69175847a5b2339ac92f169"
+    "revision": "3f850607d40aa85de2b89ed3385d5265"
   },
   {
     "url": "index.html",
-    "revision": "aa462f292ac45511d3845c7989f4a509"
+    "revision": "31059c822c6f7bf450ea495325c76eea"
+  },
+  {
+    "url": "main.js",
+    "revision": "a171f1d85e74536282cf2484e1d9b3df"
+  },
+  {
+    "url": "main.min.css",
+    "revision": "d6086dca7ff97e3e9179dcb5c16b2d16"
+  },
+  {
+    "url": "manifest.json",
+    "revision": "0021dc4a7f1b2815d3a66ac8d37375b3"
   },
   {
     "url": "README.md",
@@ -74,3 +90,5 @@ self.__precacheManifest = [
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(/\.(?:png|jpg|jpeg|ico|svg|bmp|pdf)$/, workbox.strategies.cacheFirst({ "cacheName":"all-files", plugins: [new workbox.expiration.Plugin({"maxEntries":100,"purgeOnQuotaError":false})] }), 'GET');

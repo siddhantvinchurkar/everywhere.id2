@@ -1,0 +1,19 @@
+{  
+    "short_name":"XDF",
+    "name":"Data Fire",
+    "icons":[  
+        {  
+            "src":"images/icons/favicon.ico",
+            "type":"image/ico",
+            "sizes":"32x32"
+        }	
+    ],
+    "background_color":"#F6F6F6",
+    "display":"standalone",
+    "orientation":"portrait",
+    "theme_color":"#FF6611",
+    "start_url":"index.html",
+    "manifest_version": 2,
+    "version": "1.0",
+    "summary":"A vault for your personal information."
+}
