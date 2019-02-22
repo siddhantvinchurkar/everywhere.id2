@@ -84,7 +84,7 @@ function applyStyles(styles){
 			$('#skeleton').fadeOut();
 			break;
 		default:
-			document.getElementById('loading-indicator').innerHTML = 'Hello from Data Fire!<br /><span style="font-size:0.5em;">Sign in with your </span><img id="sign-in-button" height="100px" src="images/logos/github_logo_white.png" style="cursor:pointer;"></img><span style="font-size:0.5em;"> account.</span>';
+			document.getElementById('loading-indicator').innerHTML = 'Hello from Data Fire!<br /><span style="font-size:0.5em;">Sign in with your </span><img id="sign-in-button" height="100px" src="images/logos/github_logo_white.png" style="cursor:pointer;" alt="Unable to load image!"></img><span style="font-size:0.5em;"> account.</span>';
 			$('#loading-indicator').fadeIn();
 			break;
 	}
@@ -196,7 +196,7 @@ function onLoad(url, element, data, returnId){
 	else console.log('\n%c ERROR %c '+ 'Failed to fetch resource at ' + url +'\n', consoleStyle2, consoleStyle3);
 	switch(returnId){
 		case 0: 
-			document.getElementById('loading-indicator').innerHTML = '<span><img id="github-logo" height="100px" src="images/logos/github_logo_white.png"></img><span style="font-size:0.5em;">/&emsp;<img id="github-avatar" height="100px" src="' + githubUser.photoURL + '" style="cursor:pointer; border-radius: 50%;"></img>&emsp;<a href="https://github.com/' + githubUsername + '" target="_blank" style="color:#FFFFFF;">' + githubUsername + '</a></span><br />' + '<span style="font-size:0.4em; line-height:40%; margin-left:20px;">' + data.bio + '</span>';
+			document.getElementById('loading-indicator').innerHTML = '<span><img id="github-logo" height="100px" src="images/logos/github_logo_white.png" alt="Unable to load image!"></img><span style="font-size:0.5em;">/&emsp;<img id="github-avatar" height="100px" src="' + githubUser.photoURL + '" style="cursor:pointer; border-radius: 50%;" alt="Unable to load image!"></img>&emsp;<a href="https://github.com/' + githubUsername + '" target="_blank" style="color:#FFFFFF;">' + githubUsername + '</a></span><br />' + '<span style="font-size:0.4em; line-height:40%; margin-left:20px;">' + data.bio + '</span>';
 			$('#loading-indicator').fadeIn();
 			$('#continue-button').fadeIn();
 			break;
