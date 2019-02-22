@@ -16,28 +16,28 @@
 		<title>Data Fire</title>
 		<link rel="stylesheet" href="main.min.css" media="none" onload="if(media!='screen,projection')media='screen,projection'">
 		<!-- Fetch Bootstrap asynchronously -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" media="none" onload="if(media!='screen,projection')media='screen,projection'">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" media="none" onload="if(media!='screen,projection')media='screen,projection'">
 		<!-- Internal CSS -->
 		<style>
-			body{background-color:rgba(255,255,255,0.87);}
-			.loading-body{background-color:rgba(255,102,17);}
 			.page-center{width:1280px;height:100px;color:#FFFFFF;font-size:5em;position:absolute;margin:auto;top:0;bottom:0;left:0;right:0;}
+			.page-bottom-right{position:fixed;bottom:100px;right:200px;}
 		</style>
 	</head>
-	<body id="body" class="loading-body">
+	<body id="body" style="background-color:#FF6611;">
 		<!-- The body of this document -->
-		<h1 id="loading-indicator" class="page-center">Getting things ready...</h1>
+		<h1 id="loading-indicator" class="page-center" style="display:none;">Getting things ready...</h1>
 		<div id="clouds" class="background-wrap"></div>
+		<button id="continue-button" type="button" class="btn btn-info btn-lg page-bottom-right" style="font-size:2em; display:none;"><b>Continue <span style="font-size:1.5em;">&rarr;</b><span></button>
 		<div id="skeleton" class="container-fluid" style="display:none;">
-			<!-- A skeleton of page will be injected here -->
+			<!-- A skeleton of the page will be injected here -->
 		</div>
 		<!-- Scripts to execute -->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-		<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
-		<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+		<script type="text/javascript" src="https://unpkg.com/popper.js/dist/umd/popper.min.js" defer></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer></script>
+		<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js" defer></script>
+		<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js" defer></script>
+		<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js" defer></script>
 		<script type="text/javascript" src="main.js" defer></script>
 	</body>
 </html>
