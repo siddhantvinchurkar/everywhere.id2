@@ -5,6 +5,11 @@
         {  
             "src":"images/icons/favicon.ico",
             "type":"image/ico",
+            "sizes":"32x32"
+        },
+        {  
+            "src":"images/icons/favicon.png",
+            "type":"image/png",
             "sizes":"512x512"
         }	
     ],
