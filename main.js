@@ -3,7 +3,7 @@ This is the controlling JS file for xdata-fire.
 ************************************************/
 
 /* Global Variables*/
-var developer = false;	// TODO: Change this value to false before pushing to production.
+var developer = true;	// TODO: Change this value to false before pushing to production.
 var loadTimeError = false;
 var theme = true;
 var consoleStyle1 = ['background-color:#222222',
