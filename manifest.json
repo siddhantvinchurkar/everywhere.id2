@@ -5,7 +5,7 @@
         {  
             "src":"images/icons/favicon.ico",
             "type":"image/ico",
-            "sizes":"32x32"
+            "sizes":"512x512"
         }	
     ],
     "background_color":"#F6F6F6",
