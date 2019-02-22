@@ -33,7 +33,7 @@ self.__precacheManifest = [
   },
   {
     "url": "components/index.skeleton.html",
-    "revision": "19dd36c6adc0a520a06b0ee67ba36436"
+    "revision": "1340704a9be8df6836ac4553ec41dd71"
   },
   {
     "url": "CONTRIBUTING.md",
@@ -68,12 +68,16 @@ self.__precacheManifest = [
     "revision": "3f850607d40aa85de2b89ed3385d5265"
   },
   {
+    "url": "images/icons/favicon.png",
+    "revision": "2e81ab84f7ea0a8acda61990b0a56b08"
+  },
+  {
     "url": "images/logos/github_logo_white.png",
-    "revision": "064ace4777ac86d7627f455f36975452"
+    "revision": "c5c70ce3c25b0d7a2365482a371cb974"
   },
   {
     "url": "index.html",
-    "revision": "528959236ce3e5e3feb489ce8f454d37"
+    "revision": "a32bfd025b71a1706c4df72f7d7fb635"
   },
   {
     "url": "index.skeleton.html",
@@ -81,7 +85,7 @@ self.__precacheManifest = [
   },
   {
     "url": "main.js",
-    "revision": "bedb1fe01304961179545ba568a76c97"
+    "revision": "da58ab8f8c5e2aa74ddefb1d811f8a57"
   },
   {
     "url": "main.min.css",
@@ -89,7 +93,7 @@ self.__precacheManifest = [
   },
   {
     "url": "manifest.json",
-    "revision": "0021dc4a7f1b2815d3a66ac8d37375b3"
+    "revision": "1f0a384aaef83e5e57afd6291b472df0"
   },
   {
     "url": "README.md",
@@ -102,3 +106,5 @@ self.__precacheManifest = [
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(/\.(?:png|jpg|jpeg|svg|bmp|psd|pdf)$/, workbox.strategies.cacheFirst({ "cacheName":"xdata-fire-runtime-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":100,"purgeOnQuotaError":false})] }), 'GET');

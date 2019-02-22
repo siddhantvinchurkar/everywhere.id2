@@ -45,11 +45,11 @@ var githubUsername = 'unknown';
 var githubUser = 'unknown';
 var githubAccessToken = 'unknown';
 
+/* Make page interactive to allow for better performance scores on Lighthouse. */
+//window.onkeypress = function(e){e = e || window.event;console.log('\n%c ACTION %c ' + 'You pressed key with code ' + e.keyCode + '\n', consoleStyle5, consoleStyle3);}
+
 window.onload = function(){
-	$('#loading-indicator').fadeIn();
-	$('#loading-indicator').fadeOut();
-	$('#continue-button').fadeOut();
-	$('#skeleton').fadeOut();
+	setFadeInitialState();
 	setTimeout(function(){
 		/* Everything must get executed only after the page has finished loading and there are no errors plus one second. */
 		if(!loadTimeError){
@@ -121,7 +121,8 @@ function load(url, method, element, returnId){
 	try{xhr.send();}catch(error){/* Change app state to errored. */console.log(error);changeAppState('error', error);onLoad(url, element, null, returnId);}
 }
 
-function changeColor(col, amt) {  
+function changeColor(col, amt){
+	/* This function will lighten or darken the given color by a specified factor. */
 	var usePound = false;
 	if(col[0] == "#"){
 		col = col.slice(1);
@@ -141,6 +142,7 @@ function changeColor(col, amt) {
 }
 
 function lightenAppBackground(){
+	/* This function will gradually lighten the app's background to #F6F6F6. */
 	if(theme){
 	theme = false;
 	var currentColor = '#FF6611';
@@ -164,6 +166,7 @@ function lightenAppBackground(){
 }
 
 function darkenAppBackground(){
+	/* This function will gradually darken the app's background to #FF6611. */
 	if(!theme){
 	theme = true;
 	var currentColor = '#FFAA66';
@@ -186,6 +189,14 @@ function darkenAppBackground(){
 	}, 100);
 	}
 	else lightenAppBackground();
+}
+
+function setFadeInitialState(){
+	/* This function will set the initial state of the elements that are planned to fade. */
+	$('#loading-indicator').fadeIn();
+	$('#loading-indicator').fadeOut();
+	$('#continue-button').fadeOut();
+	$('#skeleton').fadeOut();
 }
 
 /* Listeners */
