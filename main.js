@@ -203,8 +203,8 @@ function setFadeInitialState(){
 
 function onLoad(url, element, data, returnId){
 	if(element !== null) injectHTML(data, element);
-	if(data !== null && developer) console.log('\n%c OK %c ' + 'Fetch complete.' + '\n', consoleStyle1, consoleStyle3);
-	else console.log('\n%c ERROR %c '+ 'Failed to fetch resource at ' + url +'\n', consoleStyle2, consoleStyle3);
+	if(data !== null) console.log('\n%c OK %c ' + 'Fetch complete.' + '\n', consoleStyle1, consoleStyle3);
+	else if(developer) console.log('\n%c ERROR %c '+ 'Failed to fetch resource at ' + url +'\n', consoleStyle2, consoleStyle3);
 	switch(returnId){
 		case 0: 
 			document.getElementById('loading-indicator').innerHTML = '<span><img id="github-logo" height="100px" src="images/logos/github_logo_white.png" alt="Unable to load image!"></img><span style="font-size:0.5em;">/&emsp;<img id="github-avatar" height="100px" src="' + githubUser.photoURL + '" style="cursor:pointer; border-radius: 50%;" alt="Unable to load image!"></img>&emsp;<a href="https://github.com/' + githubUsername + '" target="_blank" style="color:#FFFFFF;text-shadow: 0px 1px 2px #FF0000;">' + githubUsername + '</a></span><br />' + '<span style="font-size:0.4em; text-shadow: 0px 1px 2px #FF0000; line-height:40%; margin-left:20px;">' + data.bio + '</span>';
