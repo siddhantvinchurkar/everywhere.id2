@@ -3,9 +3,13 @@ This is the controlling JS file for xdata-fire.
 ************************************************/
 
 /* Global Variables*/
+
+/* Script Variables */
+
 var developer = true;	/* TODO: Change this value to false before pushing to production. */
 var loadTimeError = false;
 var theme = true;
+
 var consoleStyle1 = ['background-color:#222222',
 			'color:#BADA55',
 			'display:inline',
@@ -41,9 +45,19 @@ var consoleStyle5 = ['background-color:#222222',
 			'text-align:center',
 			'font-size:1.1em',
 			'font-weight:bold'].join(';');
+var consoleStyle6 = ['background-color:#222222',
+			'color:#00FF00',
+			'display:inline',
+			'text-shadow:0 1px 0 rgba(0, 0, 0, 0.3)',
+			'text-align:center',
+			'font-size:1.1em',
+			'font-weight:bold'].join(';');
+			
 var githubUsername = 'unknown';
 var githubUser = 'unknown';
 var githubAccessToken = 'unknown';
+
+var db = 'unknown';
 
 window.onload = function(){
 	setFadeInitialState();
@@ -236,6 +250,12 @@ function onAppLoad(){
 		messagingSenderId: '458048346214'
 	});
 	
+	/* Acknowledge Firestore timestamp changes. */
+	firebase.firestore().settings({timestampsInSnapshots: true});
+	
+	/* Initialize the database object. */
+	db = firebase.firestore();
+	
 	/* Data Handlers */
 	
 	/* Handle sign in button click */
@@ -287,7 +307,16 @@ function onUserSignedIn(username, user, accessToken){
 	githubAccessToken = accessToken;
 	console.log('\n%c OK %c ' + 'Signed in as ' + githubUser.displayName + '!\n', consoleStyle1, consoleStyle3);
 	load('https://api.github.com/users/' + githubUsername, 'GET', null, 0);
-}
+	db.collection('users').where('email', '==', githubUser.email).get().then(function(querySnapshot){
+		querySnapshot.forEach(function(doc){
+			if(!doc.id){
+				db.collection('users').add({displayName:githubUser.displayName,email:githubUser.email,username:githubUsername,photoURL:githubUser.photoURL}).then(function(){
+					console.log('\n%c FIRESTORE %c ' + ' ADD' + '\n', consoleStyle6, consoleStyle3);
+				});
+			}
+		});
+	});
+}	
 
 function onUserSignedOut(){
 	/* This callback is triggered when the user signs out. */

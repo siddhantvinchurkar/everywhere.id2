@@ -69,15 +69,15 @@ self.__precacheManifest = [
   },
   {
     "url": "images/icons/favicon.png",
-    "revision": "2e81ab84f7ea0a8acda61990b0a56b08"
+    "revision": "3b19f45f20ce319ecabe8d26e433af71"
   },
   {
     "url": "images/logos/github_logo_white.png",
-    "revision": "c5c70ce3c25b0d7a2365482a371cb974"
+    "revision": "6a751cad1cf3b12360fb7ef41bcd3c36"
   },
   {
     "url": "index.html",
-    "revision": "a32bfd025b71a1706c4df72f7d7fb635"
+    "revision": "3fa31bb492cc1f170b73d9903492d5e7"
   },
   {
     "url": "index.skeleton.html",
@@ -85,11 +85,15 @@ self.__precacheManifest = [
   },
   {
     "url": "main.js",
-    "revision": "da58ab8f8c5e2aa74ddefb1d811f8a57"
+    "revision": "0126a943a7fa9566ea667a5d989ed30f"
   },
   {
     "url": "main.min.css",
     "revision": "d6086dca7ff97e3e9179dcb5c16b2d16"
+  },
+  {
+    "url": "main.min.js",
+    "revision": "7365ec24ab3d8d12ae5ae11adf9ae882"
   },
   {
     "url": "manifest.json",
