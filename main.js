@@ -3,7 +3,7 @@ This is the controlling JS file for xdata-fire.
 ************************************************/
 
 /* Global Variables*/
-var developer = true;	// TODO: Change this value to false before pushing to production.
+var developer = true;	/* TODO: Change this value to false before pushing to production. */
 var loadTimeError = false;
 var theme = true;
 var consoleStyle1 = ['background-color:#222222',
@@ -46,7 +46,7 @@ var githubUser = 'unknown';
 var githubAccessToken = 'unknown';
 
 /* Make page interactive to allow for better performance scores on Lighthouse. */
-//window.onkeypress = function(e){e = e || window.event;console.log('\n%c ACTION %c ' + 'You pressed key with code ' + e.keyCode + '\n', consoleStyle5, consoleStyle3);}
+window.onkeypress = function(e){e = e || window.event;console.log('\n%c ACTION %c ' + 'You pressed key with code ' + e.keyCode + '\n', consoleStyle5, consoleStyle3);}
 
 window.onload = function(){
 	setFadeInitialState();
@@ -60,7 +60,7 @@ window.onload = function(){
 	}, 2000);
 }
 
-// Reload app on error (This will ensure that all external JS libraries are loaded, cached and ready for use)
+/* Reload app on error (This will ensure that all external JS libraries are loaded, cached and ready for use) */
 window.onerror = function(msg, url, lineNo, columnNo, error){
 	/* Clear the console. */
 	console.clear();
@@ -112,8 +112,8 @@ function injectHTML(data, element){
 
 function load(url, method, element, returnId){
 	/* This function will asynchronously pull fetch data from the given URL. */
-	if(developer) console.log('\n%c ' + method + ' %c '+ url +'\n', consoleStyle4, consoleStyle3);
-	const xhr = new XMLHttpRequest();
+	if(developer) console.log('\n%c ' + method + ' %c '+ url + '\n', consoleStyle4, consoleStyle3);
+	var xhr = new XMLHttpRequest();
 	if(element == null) xhr.responseType = 'json';
 	else xhr.responseType = 'text';
 	xhr.onreadystatechange = function(){if(xhr.readyState == XMLHttpRequest.DONE){onLoad(url, element, xhr.response, returnId);}}
@@ -246,9 +246,9 @@ function onAppLoad(){
 		$('#loading-indicator').fadeOut();
 		var provider = new firebase.auth.GithubAuthProvider();
 		/* TODO: Add these scopes when and if you need to use them. */
-		//provider.addScope('user');
-		//provider.addScope('repo');
-		//provider.addScope('gist');
+		/* provider.addScope('user'); */
+		/* provider.addScope('repo'); */
+		/* provider.addScope('gist'); */
 		firebase.auth().signInWithPopup(provider).then(function(result){onUserSignedIn(result.additionalUserInfo.username, result.user, result.credential.accessToken);}).catch(function(error){console.log(error);});
 	}
 	/* Handle sign in result */
