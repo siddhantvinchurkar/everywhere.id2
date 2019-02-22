@@ -28,6 +28,10 @@ self.__precacheManifest = [
     "revision": "c705391b8834a912453248e4d16b2c53"
   },
   {
+    "url": "components/index.clouds.html",
+    "revision": "11ce7645003d66407eb9adad883545c7"
+  },
+  {
     "url": "components/index.skeleton.html",
     "revision": "19dd36c6adc0a520a06b0ee67ba36436"
   },
@@ -64,12 +68,20 @@ self.__precacheManifest = [
     "revision": "3f850607d40aa85de2b89ed3385d5265"
   },
   {
+    "url": "images/logos/github_logo_white.png",
+    "revision": "064ace4777ac86d7627f455f36975452"
+  },
+  {
     "url": "index.html",
-    "revision": "31059c822c6f7bf450ea495325c76eea"
+    "revision": "528959236ce3e5e3feb489ce8f454d37"
+  },
+  {
+    "url": "index.skeleton.html",
+    "revision": "07336ed61a1605b65fac6297dc307dc8"
   },
   {
     "url": "main.js",
-    "revision": "a171f1d85e74536282cf2484e1d9b3df"
+    "revision": "bedb1fe01304961179545ba568a76c97"
   },
   {
     "url": "main.min.css",
@@ -90,5 +102,3 @@ self.__precacheManifest = [
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
-
-workbox.routing.registerRoute(/\.(?:png|jpg|jpeg|ico|svg|bmp|pdf)$/, workbox.strategies.cacheFirst({ "cacheName":"all-files", plugins: [new workbox.expiration.Plugin({"maxEntries":100,"purgeOnQuotaError":false})] }), 'GET');
