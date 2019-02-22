@@ -54,7 +54,7 @@ window.onload = function(){
 		/* Everything must get executed only after the page has finished loading and there are no errors plus one second. */
 		if(!loadTimeError){
 			/* Register the service worker if it doesn't yet exist. */
-			if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js');});}
+			if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(function(){console.log('\n%c OK %c ' + 'Service worker registered.' + '\n', consoleStyle1, consoleStyle3);});}
 			onAppLoad();
 		}
 	}, 1000);
@@ -262,11 +262,11 @@ function onAppStateChanged(appState, message){
 	switch(appState){
 		case 'ready':
 			/* Let people know when Data Fire is ready. */
-			console.log('\n%c OK %c '+ message +'\n', consoleStyle1, consoleStyle3);
+			console.log('\n%c OK %c ' + message + '\n', consoleStyle1, consoleStyle3);
 			break;
 		case 'error':
 			/* Let people know when Data Fire is having trouble. */
-			console.log('\n%c ERROR %c '+ message +'\n', consoleStyle2, consoleStyle3);
+			console.log('\n%c ERROR %c ' + message + '\n', consoleStyle2, consoleStyle3);
 			break;
 		default: /* What are you trying to do, Sid? */ break;
 	}
