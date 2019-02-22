@@ -6,7 +6,7 @@ This is the controlling JS file for xdata-fire.
 
 /* Script Variables */
 
-var developer = true;	/* TODO: Change this value to false before pushing to production. */
+var developer = false;	/* TODO: Change this value to false before pushing to production. */
 var loadTimeError = false;
 var theme = true;
 
@@ -249,9 +249,6 @@ function onAppLoad(){
 		storageBucket: 'xdata-fire.appspot.com',
 		messagingSenderId: '458048346214'
 	});
-	
-	/* Acknowledge Firestore timestamp changes. */
-	firebase.firestore().settings({timestampsInSnapshots: true});
 	
 	/* Initialize the database object. */
 	db = firebase.firestore();
