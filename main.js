@@ -45,9 +45,6 @@ var githubUsername = 'unknown';
 var githubUser = 'unknown';
 var githubAccessToken = 'unknown';
 
-/* Make page interactive to allow for better performance scores on Lighthouse. */
-window.onkeypress = function(e){e = e || window.event;console.log('\n%c ACTION %c ' + 'You pressed key with code ' + e.keyCode + '\n', consoleStyle5, consoleStyle3);}
-
 window.onload = function(){
 	setFadeInitialState();
 	setTimeout(function(){
