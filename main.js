@@ -6,9 +6,10 @@ This is the controlling JS file for xdata-fire.
 
 /* Script Variables */
 
-var developer = false;	/* TODO: Change this value to false before pushing to production. */
+var developer = true;	/* TODO: Change this value to false before pushing to production. */
 var loadTimeError = false;
 var theme = true;
+var pulseAnimation = 'unknown';
 
 var consoleStyle1 = ['background-color:#222222',
 			'color:#BADA55',
@@ -123,13 +124,13 @@ function injectHTML(data, element){
 
 function load(url, method, element, returnId){
 	/* This function will asynchronously pull fetch data from the given URL. */
-	if(developer) console.log('\n%c ' + method + ' %c '+ url + '\n', consoleStyle4, consoleStyle3);
+	if(developer)console.log('\n%c ' + method + ' %c '+ url + '\n', consoleStyle4, consoleStyle3);
 	var xhr = new XMLHttpRequest();
 	if(element == null) xhr.responseType = 'json';
 	else xhr.responseType = 'text';
-	xhr.onreadystatechange = function(){if(xhr.readyState == XMLHttpRequest.DONE){onLoad(url, element, xhr.response, returnId);}}
+	xhr.onreadystatechange = function(){if(xhr.readyState == XMLHttpRequest.DONE){onLoad(url,element,xhr.response,returnId);}}
 	xhr.open(method, url);
-	try{xhr.send();}catch(error){/* Change app state to errored. */console.log(error);changeAppState('error', error);onLoad(url, element, null, returnId);}
+	try{xhr.send();}catch(error){/* Change app state to errored. */console.log(error);changeAppState('error', error);onLoad(url,element,null,returnId);}
 }
 
 function changeColor(col, amt){
@@ -210,11 +211,29 @@ function setFadeInitialState(){
 	$('#skeleton').fadeOut();
 }
 
+function startPulseAnimation(element){
+	var switc_h=true;
+	pulseAnimation = setInterval(function(){
+		if(switc_h){
+			switc_h=false;
+			$('#' + element).fadeOut();
+		}
+		else{
+			switc_h=true; $('#' + element).fadeIn();
+		}
+	},1000);
+}
+
+function stopPulseAnimation(element){
+	clearInterval(pulseAnimation);
+	$('#' + element).fadeOut();
+}
+
 /* Listeners */
 
 function onLoad(url, element, data, returnId){
 	if(element !== null) injectHTML(data, element);
-	if(data !== null) console.log('\n%c OK %c ' + 'Fetch complete.' + '\n', consoleStyle1, consoleStyle3);
+	if(data !== null){if(developer)console.log('\n%c OK %c ' + 'Fetch complete.' + '\n', consoleStyle1, consoleStyle3);}
 	else if(developer) console.log('\n%c ERROR %c '+ 'Failed to fetch resource at ' + url +'\n', consoleStyle2, consoleStyle3);
 	switch(returnId){
 		case 0: 
@@ -224,7 +243,9 @@ function onLoad(url, element, data, returnId){
 			break;
 		case 1:
 			setTimeout(function(){$('#loading-indicator').fadeOut();$('#skeleton').fadeIn();}, 1000);
-			lightenAppBackground();
+			if(developer)startPulseAnimation('skeleton-indicator');
+			else stopPulseAnimation('skeleton-indicator');
+			onSkeletonLoad();
 			break;
 		default:
 			break;
@@ -277,7 +298,7 @@ function onAppLoad(){
 		$('#continue-button').fadeOut();
 		$('#clouds').fadeOut();
 		$('#continue-button').fadeOut();
-		/* Inject the page skeleton into the root file (index.html) */
+		/* Inject the page skeleton (html & js) into the root file (index.html) */
 		load('components/index.skeleton.html', 'GET', 'skeleton', 1);
 	}
 }
@@ -317,4 +338,8 @@ function onUserSignedIn(username, user, accessToken){
 
 function onUserSignedOut(){
 	/* This callback is triggered when the user signs out. */
+}
+
+function onSkeletonLoad(){
+	/* This callback is triggered when the skeleton of the page is injected into the root file (index.html). */
 }
