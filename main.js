@@ -60,6 +60,8 @@ var githubAccessToken = 'unknown';
 
 var db = 'unknown';
 
+var loadingText = ['Getting things ready...', 'Pinging servers...', 'Praying to the rain gods for access to the cloud...', 'Transmitting millions of bytes a second...', 'Setting up things for you...', 'आपकी जानकारी प्राप्त की जा रही हैं ...', 'हमारा सर्वर आपकी जानकारी तैयार कर रहा हैं ...', 'कोड निष्पादित किया जा रहा हैं ...', 'Ihre Daten finden ...', 'Exécution de JavaScript ...'];
+
 window.onload = function(){
 	setFadeInitialState();
 	setTimeout(function(){
@@ -212,6 +214,7 @@ function setFadeInitialState(){
 }
 
 function startPulseAnimation(element){
+	/* This function will pulsate (animate) the given element */
 	var switc_h=true;
 	pulseAnimation = setInterval(function(){
 		if(switc_h){
@@ -225,8 +228,14 @@ function startPulseAnimation(element){
 }
 
 function stopPulseAnimation(element){
+	/* This function will stop the given element from pulsating. */
 	clearInterval(pulseAnimation);
 	$('#' + element).fadeOut();
+}
+
+function getRandomLoadingText(){
+	/* This function will return a random string from the loadingText array */
+	return loadingText[Math.floor((Math.random()*(loadingText.length-1)))];
 }
 
 /* Listeners */
@@ -242,9 +251,6 @@ function onLoad(url, element, data, returnId){
 			$('#continue-button').fadeIn();
 			break;
 		case 1:
-			setTimeout(function(){$('#loading-indicator').fadeOut();$('#skeleton').fadeIn();}, 1000);
-			if(developer)startPulseAnimation('skeleton-indicator');
-			else stopPulseAnimation('skeleton-indicator');
 			onSkeletonLoad();
 			break;
 		default:
@@ -294,7 +300,7 @@ function onAppLoad(){
 	/* Handle continue button click */
 	document.getElementById('continue-button').onclick = function(){
 		$('#loading-indicator').fadeOut();
-		setTimeout(function(){document.getElementById('loading-indicator').innerHTML = 'Getting things ready...';$('#loading-indicator').fadeIn();}, 1000);
+		setTimeout(function(){document.getElementById('loading-indicator').innerHTML = getRandomLoadingText();$('#loading-indicator').fadeIn();}, 1000);
 		$('#continue-button').fadeOut();
 		$('#clouds').fadeOut();
 		$('#continue-button').fadeOut();
@@ -342,4 +348,23 @@ function onUserSignedOut(){
 
 function onSkeletonLoad(){
 	/* This callback is triggered when the skeleton of the page is injected into the root file (index.html). */
+	setTimeout(function(){$('#loading-indicator').fadeOut();$('#skeleton').fadeIn();if(developer)startPulseAnimation('skeleton-indicator');else stopPulseAnimation('skeleton-indicator');},1000);
+	
+	/* Animate messenger to simulate speaking to the user */
+	setTimeout(function(){
+		var typewriter = new Typewriter(document.getElementById('skeleton-messenger'),{loop: true});
+		typewriter.typeString('Data Fire is easy to use.')
+		.pauseFor(1000)
+		.deleteAll()
+		.typeString('You either <u>store a document</u>;')
+		.pauseFor(1000)
+		.deleteAll()
+		.typeString('Or <u>retrieve it</u>.')
+		.pauseFor(1000)
+		.deleteAll()
+		.typeString('When you\'re done, Data Fire will sign you out automatically.')
+		.pauseFor(1000)
+		.deleteAll()
+		.start();
+	}, 1500);
 }
