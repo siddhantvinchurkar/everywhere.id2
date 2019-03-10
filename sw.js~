@@ -11,13 +11,7 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.1.0/workbox-sw.js");
-
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -39,19 +33,15 @@ self.__precacheManifest = [
   },
   {
     "url": "components/index.skeleton.html",
-    "revision": "b80e623e8a24f2fa2954ff63be5d4c73"
+    "revision": "1340704a9be8df6836ac4553ec41dd71"
   },
   {
     "url": "CONTRIBUTING.md",
-    "revision": "0ad491b97bb7ffe6f4c92d91f636945b"
-  },
-  {
-    "url": "CONTRIBUTING.md~",
-    "revision": "0ad491b97bb7ffe6f4c92d91f636945b"
+    "revision": "8afdfbc63fabdaae3c8dac447acc6586"
   },
   {
     "url": "docs/index.html",
-    "revision": "c8f462ba9b9803396b757061b2ed1413"
+    "revision": "fad087f756bea883e37f4484a0e7d4ad"
   },
   {
     "url": "firebase.json",
@@ -87,11 +77,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "466818310beb6788f5c5af2adbd0e0ea"
-  },
-  {
-    "url": "index.html~",
-    "revision": "466818310beb6788f5c5af2adbd0e0ea"
+    "revision": "3fa31bb492cc1f170b73d9903492d5e7"
   },
   {
     "url": "index.skeleton.html",
@@ -99,47 +85,30 @@ self.__precacheManifest = [
   },
   {
     "url": "main.js",
-    "revision": "b357a6492548a2dbcfc3355daf59b855"
-  },
-  {
-    "url": "main.js~",
-    "revision": "b357a6492548a2dbcfc3355daf59b855"
+    "revision": "0126a943a7fa9566ea667a5d989ed30f"
   },
   {
     "url": "main.min.css",
-    "revision": "48a25eea7cee64719efde4f2ece26ddc"
+    "revision": "d6086dca7ff97e3e9179dcb5c16b2d16"
   },
   {
     "url": "main.min.js",
-    "revision": "ef30e7660d0ec8347d3f3dd5b20db741"
-  },
-  {
-    "url": "main.skeleton.js",
-    "revision": "bc98fdf2f28639034048fc0c8cc1ec12"
+    "revision": "7365ec24ab3d8d12ae5ae11adf9ae882"
   },
   {
     "url": "manifest.json",
-    "revision": "fe4db8ffc28a54d58d22f0af50a1fc7d"
-  },
-  {
-    "url": "manifest.json~",
-    "revision": "fe4db8ffc28a54d58d22f0af50a1fc7d"
+    "revision": "1f0a384aaef83e5e57afd6291b472df0"
   },
   {
     "url": "README.md",
-    "revision": "d620a49d7e43eea14288a0618dc00de6"
-  },
-  {
-    "url": "README.md~",
-    "revision": "d620a49d7e43eea14288a0618dc00de6"
+    "revision": "6b588ec70bd168e54d265496cf0142c2"
   },
   {
     "url": "storage.rules",
     "revision": "166a8a900000c71f8e5a5cb4247fa6d4"
-  },
-  {
-    "url": "sw.js~",
-    "revision": "5fd78c091ade547c75314d71addba932"
   }
 ].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(/\.(?:png|jpg|jpeg|svg|bmp|psd|pdf)$/, workbox.strategies.cacheFirst({ "cacheName":"everywhere-id-runtime-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":100,"purgeOnQuotaError":false})] }), 'GET');
